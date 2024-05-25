@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  romsann:
+    container_name: pomodoro
+    image: simple-svelte-pomodoro:latest
+    restart: unless-stopped
+    environment:
+      - PORT=8156
+    ports:
+      - '8156:8156'
+    volumes:
+      - .:/src
+    networks:
+      - pomodoro-network
+
+networks:
+  romsann-network:
+    driver: bridge
